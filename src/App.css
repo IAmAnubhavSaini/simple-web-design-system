@@ -1,18 +1,9 @@
 .playground {
-    width: 75%;
     position: absolute;
     right: 0;
     top: 0;
     min-width: 500px;
-}
-
-.playground > div {
-    margin: 1em;
-    padding: 1em;
-}
-
-.label {
-    font-size: 1.4em;
+    width: 70%;
 }
 
 .controls {
@@ -20,11 +11,10 @@
     left: 0;
     top: 0;
     height: 100%;
-    width: 20%;
     background-color: #eee;
     overflow-y: scroll;
     min-width: 300px;
-
+    text-align: center;
 }
 
 .controls > div {
@@ -34,5 +24,5 @@
 }
 
 .controls label {
-    font-size: 1.2em;
+    display: block;
 }

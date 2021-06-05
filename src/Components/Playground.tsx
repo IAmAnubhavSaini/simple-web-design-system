@@ -1,8 +1,15 @@
 import React, {useState} from 'react';
+import styled from 'styled-components';
+
+const Grid2 = styled.div`
+  display: grid;
+  grid-gap: 1vw;
+  grid-template-columns: 1fr auto;
+`;
 
 export default function Playground() {
     const [fontSizeUnit, setFontSizeUnit] = React.useState('px');
-    const [fontSize, setFontSize] = React.useState(`32`);
+    const [fontSize, setFontSize] = React.useState(`16`);
     const [fontWeight, setFontWeight] = React.useState(400);
     const [fontStretch, setFontStretch] = React.useState('normal');
     const [fontStyle, setFontStyle] = React.useState('normal');
@@ -14,18 +21,17 @@ export default function Playground() {
     const [borderRadius, setBorderRadius] = useState('4');
 
     const [heightUnit, setHeightUnit] = useState('px');
-    const [height, setHeight] = useState(100);
-    const [widthUnit, setWidthUnit] = useState('%');
-    const [width, setWidth] = useState(100);
+    const [height, setHeight] = useState(400);
+    const [widthUnit, setWidthUnit] = useState('px');
+    const [width, setWidth] = useState(400);
 
     const [paddingUnit, setPaddingUnit] = useState('em');
     const [padding, setPadding] = useState('1');
     const [marginUnit, setMarginUnit] = useState('em');
     const [margin, setMargin] = useState('1');
-    
-    return (
-        <div>
 
+    return (
+        <Grid2>
             <div className={"controls"}>
                 <h2>Controls</h2>
                 <div>
@@ -106,7 +112,7 @@ export default function Playground() {
                     <label>border-radius: ({borderRadius}) <br/>
                         <input value={borderRadius} type="range"
                                onChange={(e: any) => setBorderRadius(e.target.value)}
-                               step={1} max={100} min={1}
+                               step={1} max={Math.max(height, width)} min={1}
                         />
                     </label>
                     <label>unit: <br/>
@@ -128,7 +134,7 @@ export default function Playground() {
                     <label>height: ({height}) <br/>
                         <input value={height} type="range"
                                onChange={(e: any) => setHeight(e.target.value)}
-                               step={1} max={10000} min={1}
+                               step={1} max={1000} min={1}
                         /> <br/>
                         <input type={"number"} value={height} onChange={(e: any) => setHeight(e.target.value)}/>
                     </label>
@@ -151,7 +157,7 @@ export default function Playground() {
                     <label>width: ({width}) <br/>
                         <input value={width} type="range"
                                onChange={(e: any) => setWidth(e.target.value)}
-                               step={1} max={10000} min={1}
+                               step={1} max={1000} min={1}
                         /> <br/>
                         <input type={"number"} value={width} onChange={(e: any) => setWidth(e.target.value)}/>
                     </label>
@@ -214,24 +220,6 @@ export default function Playground() {
 
             </div>
             <div className={"playground"}>
-                <h1>Playground</h1>
-
-
-                <div className={"debug"}>
-                    font-size: {fontSize}{fontSizeUnit};<br/>
-                    font-weight: {fontWeight};<br/>
-                    font-stretch: {fontStretch};<br/>
-                    font-style: {fontStyle};<br/>
-                    color: {color};<br/>
-                    background-color: {backgroundColor};<br/>
-                    border: {border};<br/>
-                    border-radius: {borderRadius}{borderRadiusUnit};<br/>
-                    height: {height}{heightUnit};<br/>
-                    width: {width}{widthUnit};<br/>
-                    padding: {padding}{paddingUnit};<br/>
-                    margin: {margin}{marginUnit};<br/>
-                </div>
-
                 <div className={"text"}>
                     <div contentEditable className={"editable"}
                          style={{
@@ -248,12 +236,23 @@ export default function Playground() {
                              padding: `${padding}${paddingUnit}`,
                              margin: `${margin}${marginUnit}`,
                          }}>
-                        Get started! Edit me!
+
+                        font-size: {fontSize}{fontSizeUnit};<br/>
+                        font-weight: {fontWeight};<br/>
+                        font-stretch: {fontStretch};<br/>
+                        font-style: {fontStyle};<br/>
+                        color: {color};<br/>
+                        background-color: {backgroundColor};<br/>
+                        border: {border};<br/>
+                        border-radius: {borderRadius}{borderRadiusUnit};<br/>
+                        height: {height}{heightUnit};<br/>
+                        width: {width}{widthUnit};<br/>
+                        padding: {padding}{paddingUnit};<br/>
+                        margin: {margin}{marginUnit};<br/>
+
                     </div>
                 </div>
-
-
             </div>
-        </div>
+        </Grid2>
     );
 }
